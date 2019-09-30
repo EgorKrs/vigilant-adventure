@@ -1,7 +1,8 @@
-class GeneratorMagic
+package logic;
+
+public class GeneratorMagic
 {
    private int[][] magicSquare;
-    // Function to generate odd sized magic squares 
     public void generateOddMagicSquare(int n)
     {
          magicSquare = new int[n][n];
@@ -88,13 +89,6 @@ class GeneratorMagic
             for ( j = n/4; j < 3 * n/4; j++)
                 magicSquare[i][j] = (n*n + 1) - magicSquare[i][j];
 
-        // Printing the magic-square
-        for (i = 0; i < n; i++)
-        {
-            for ( j = 0; j < n; j++)
-                System.out.print(magicSquare[i][j]+" ");
-            System.out.println();
-        }
     }
     public int[][] getMatrix(){
         return magicSquare;

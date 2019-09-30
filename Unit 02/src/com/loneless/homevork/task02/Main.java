@@ -1,12 +1,12 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Stack;
+package com.loneless.homevork.task02;
 
+import logic.GeneratorMagic;
+
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int size;
-        System.out.println("Введите размерность квадрата");
+        System.out.println("Введите размерность квадрата от 3 для корректных магических квадратов");
         Scanner scanner=new Scanner(System.in);
         size=scanner.nextInt();
         GeneratorMagic magic=new GeneratorMagic();
@@ -27,7 +27,7 @@ public class Main {
             }
             System.out.println(" ");
         }
-        System.out.println("The Magic Square for n="+matrix.length);
-        System.out.println("Sum of each row or column "+matrix.length*(matrix.length*matrix.length+1)/2+":");
+        System.out.println("The Magic Square for n= "+matrix.length);
+        System.out.println("Sum of each row or column= "+matrix.length*(matrix.length*matrix.length+1)/2);
     }
 }
