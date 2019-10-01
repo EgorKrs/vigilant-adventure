@@ -1,38 +1,37 @@
-package logic;
+package com.loneless.homevork.task02.logic_and_impl;
 
 public class GeneratorMagic
 {
    private int[][] magicSquare;
-    public void generateOddMagicSquare(int n)
+    public void generateOddMagicSquare(int n) // для не четного квадрата
     {
          magicSquare = new int[n][n];
 
-        // Initialize position for 1 
+        //  Находим позицию 1 исходя из размера
         int i = n/2;
         int j = n-1;
 
-        // One by one put all values in magic square 
+        //  заносим допустимые значения в квадрат
         for (int num=1; num <= n*n; )
         {
-            if (i==-1 && j==n) //3rd condition 
+            if (i==-1 && j==n) //третие условие
             {
                 j = n-2;
                 i = 0;
             }
             else
             {
-                //1st condition helper if next number  
-                // goes to out of square's right side 
+                //  первое условие кв. при выходе с за пределы справа
+
                 if (j == n)
                     j = 0;
 
-                //1st condition helper if next number is  
-                // goes to out of square's upper side 
+                // первое условие кв. при выходе с за пределы сверху
                 if (i < 0)
                     i=n-1;
             }
 
-            //2nd condition 
+            // 2 условие
             if (magicSquare[i][j] != 0)
             {
                 j -= 2;
@@ -40,51 +39,44 @@ public class GeneratorMagic
                 continue;
             }
             else
-                //set number 
                 magicSquare[i][j] = num++;
 
-            //1st condition 
+            //первое условие
             j++;  i--;
         }
     }
-    public void generateEvenMagicSquare(int n)
+    public void generateEvenMagicSquare(int n) // для чйтного квадрата
     {
         int i, j;
         magicSquare = new int[n][n];
-        // filling matrix with its count value
-        // starting from 1;
+        // заполнение значениями с 1
         for ( i = 0; i < n; i++)
             for ( j = 0; j < n; j++)
                 magicSquare[i][j] = (n*i) + j + 1;
 
-        // change value of Array elements
-        // at fix location as per rule
-        // (n*n+1)-arr[i][j]
-        // Top Left corner of Matrix
-        // (order (n/4)*(n/4))
+        // изменения значений для локализации правила (n*n+1)-magicSquare[i][j]
+        // слевого угла матрицы
+
         for ( i = 0; i < n/4; i++)
             for ( j = 0; j < n/4; j++)
                 magicSquare[i][j] = (n*n + 1) - magicSquare[i][j];
 
-        // Top Right corner of Matrix
-        // (order (n/4)*(n/4))
+        // Правый верхний угол с правилом (n/4)*(n/4)
         for ( i = 0; i < n/4; i++)
             for ( j = 3 * (n/4); j < n; j++)
                 magicSquare[i][j] = (n*n + 1) - magicSquare[i][j];
 
-        // Bottom Left corner of Matrix
-        // (order (n/4)*(n/4))
+        // левый нижний угол с правилом (n/4)*(n/4)
         for ( i = 3 * n/4; i < n; i++)
             for ( j = 0; j < n/4; j++)
                 magicSquare[i][j] = (n*n+1) - magicSquare[i][j];
 
-        // Bottom Right corner of Matrix
-        // (order (n/4)*(n/4))
+        // правый верхний угол с правилом (n/4)*(n/4)
         for ( i = 3 * n/4; i < n; i++)
             for ( j = 3 * n/4; j < n; j++)
                 magicSquare[i][j] = (n*n + 1) - magicSquare[i][j];
 
-        // Centre of Matrix (order (n/2)*(n/2))
+        // центр с правилом (n/2)*(n/2)
         for ( i = n/4; i < 3 * n/4; i++)
             for ( j = n/4; j < 3 * n/4; j++)
                 magicSquare[i][j] = (n*n + 1) - magicSquare[i][j];
