@@ -1,6 +1,6 @@
-package com.loneless.homevork.task02;
+package com.loneless.homevork.task02.magic_square;
 
-import com.loneless.homevork.task02.logic_and_impl.*;
+import com.loneless.homevork.task02.magic_square.logic_and_impl.*;
 
 import java.util.Scanner;
 public class Main {

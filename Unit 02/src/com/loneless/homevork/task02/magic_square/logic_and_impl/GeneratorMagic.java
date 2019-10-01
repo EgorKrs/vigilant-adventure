@@ -1,4 +1,4 @@
-package com.loneless.homevork.task02.logic_and_impl;
+package com.loneless.homevork.task02.magic_square.logic_and_impl;
 
 public class GeneratorMagic
 {
