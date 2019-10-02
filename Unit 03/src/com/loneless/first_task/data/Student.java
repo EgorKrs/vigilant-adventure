@@ -1,4 +1,4 @@
-package com.loneless.firstTask;
+package com.loneless.first_task.data;
 
 public class Student {
     private String surname;
@@ -12,7 +12,9 @@ public class Student {
         setProgress(progress);
         setSurname(surname);
     }
-    public Student(){}
+    public Student(){
+
+    }
 
     public String getInitials() {
         return initials;
