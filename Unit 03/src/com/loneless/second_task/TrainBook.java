@@ -1,6 +1,6 @@
 package com.loneless.second_task;
 
-import java.util.Arrays;
+
 
 public class TrainBook {
     Train trains[];
@@ -11,6 +11,21 @@ public class TrainBook {
 
     public Train[] getTrains() {
         return trains;
+    }
+
+    public String add(Train train){
+        String strToReturn=null;
+        for (int i=0;i<trains.length;i++) {
+            if (trains[i] == null) {
+                trains[i] = train;
+                strToReturn="train was add";
+                break;
+            }
+        }
+        if(strToReturn==null){
+            strToReturn="error no free space";
+        }
+        return strToReturn;
     }
 
     public Train getTrains(int index) {

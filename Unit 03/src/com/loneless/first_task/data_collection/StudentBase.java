@@ -34,7 +34,7 @@ public class StudentBase {
             lastIndex++;
             strToRet="success";
         }
-        else strToRet="fullStack";
+        else strToRet=" error fullStack";
         return strToRet;
     }
 }
