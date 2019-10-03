@@ -27,6 +27,7 @@ public class StudentBase {
     public void setStudents(Student[] students) {
         this.students = students;
     }
+
     public String add(Student student){
         String strToRet;
         if(lastIndex<size){

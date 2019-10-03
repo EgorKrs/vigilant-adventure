@@ -15,8 +15,13 @@ public class TrainBook {
 
     public String add(Train train){
         String strToReturn=null;
+        boolean isEmpty=false;
         for (int i=0;i<trains.length;i++) {
-            if (trains[i] == null) {
+            if (trains[i]==null)
+               isEmpty=true;
+            else if(train.getNumber()!=null&&trains[i].getNumber()==null)
+                isEmpty=true;
+            if(isEmpty){
                 trains[i] = train;
                 strToReturn="train was add";
                 break;
@@ -28,8 +33,11 @@ public class TrainBook {
         return strToReturn;
     }
 
+
     public Train getTrains(int index) {
+        if(index<trains.length&&index>=0)
         return trains[index];
+        else return null;
     }
 
     public void setTrains(Train[] trains) {

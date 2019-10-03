@@ -23,9 +23,10 @@ public class DataHandler {
         return trainBook.getTrains(Arrays.binarySearch(trainBook.getTrains(),new Train(name)));
     }
 
-    public void add(Train train){
-        trainBook.add(train);
+    public String add(Train train){
+        return trainBook.add(train);
     }
+
     public void basicBook(){
         try {
             Train train=new Train("mos","123qwe",new SimpleDateFormat("yyyy-MM-dd").parse("2019-09-22"));
@@ -34,8 +35,9 @@ public class DataHandler {
             trainBook.add(train);
             train=new Train("mos","111",new SimpleDateFormat("yyyy-MM-dd").parse("2019-09-12"));
             trainBook.add(train);
-            for (int i=2;i<trainBook.getTrains().length;i++){
-                trainBook.add(new Train());
+            for (int i=3;i<trainBook.getTrains().length;i++){
+                train=new Train();
+                trainBook.add(train);
             }
         } catch (ParseException e) {
             e.printStackTrace();
