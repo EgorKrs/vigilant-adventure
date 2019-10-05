@@ -1,5 +1,8 @@
 package com.loneless.second_task;
 
+import com.loneless.second_task.data.Train;
+import com.loneless.second_task.data_handler.DataHandler;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -11,15 +14,16 @@ public class Main {
         handler.basicBook();
         while (true){
             try {
-                System.out.println("Enter 1 to add train\n2 to see all trains\n" +
+                System.out.println("Enter \n1 to add train\n2 to see all trains\n" +
                         "3 to sort trains\n4 to find train\n-1 для выхода");
                 switch (scanner.nextInt()) {
+
                     case -1:
                         return;
                     case 1:
                         boolean errFlag=true;
                         Train train = new Train();
-                        scanner.nextLine();
+                        scanner.skip(".*\n");
                         System.out.println("Enter name of train");
                         train.setNumber(scanner.nextLine());
                         System.out.println("Enter destination");
@@ -45,13 +49,34 @@ public class Main {
                         }
                         break;
                     case 3:
-                        handler.sorting();
+                        System.out.println("Enter\n1 to sort by number\n2 sort by departure time");
+                        int choice=scanner.nextInt();
+                        handler.sorting(choice);
+                        if(choice==1) {
+                            for (int i = 0; i < handler.getTrainBook().getTrains().length; i++) {
+                                if (handler.getTrainBook().getTrains()[i].getNumber() != null) {
+                                    System.out.println("Number is: " + handler.getTrainBook().getTrains(i).getNumber());
+                                    System.out.println("Destination is: " + handler.getTrainBook().getTrains(i).getDestination());
+                                    System.out.println("Departure date is: " + handler.getTrainBook().getTrains(i).getDepartureDate() + "\n");
+                                }
+                            }
+                        }
+                        if(choice==2) {
+                            for (int i = 0; i < handler.getTrainBook().getTrainsSort().length; i++) {
+                                if (handler.getTrainBook().getTrainsSort()[i].getNumber() != null) {
+                                    System.out.println("Number is: " + handler.getTrainBook().getTrainsSort(i).getNumber());
+                                    System.out.println("Destination is: " + handler.getTrainBook().getTrainsSort(i).getDestination());
+                                    System.out.println("Departure date is: " + handler.getTrainBook().getTrainsSort(i).getDepartureDate() + "\n");
+                                }
+                            }
+                        }
+
                         break;
                     case 4:
                         String name;
                         System.out.println("Enter name of train");
-                        handler.sorting();
-                        scanner.nextLine();
+                        handler.sorting(1);
+                        scanner.skip(".*\n");
                         name = scanner.nextLine();
                         Train trainThatWasLooking = handler.findTrainPos(name);
                         if (trainThatWasLooking != null) {

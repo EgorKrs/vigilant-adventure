@@ -1,13 +1,13 @@
-package com.loneless.second_task;
+package com.loneless.second_task.data;
 
 import java.util.Date;
 
 public class Train implements Comparable<Train>{
-    private String destination;
-    private String number;
-    private Date departureDate;
+    protected String destination;
+    protected String number;
+    protected Date departureDate;
 
-    Train(){    }
+    public Train(){    }
 
     public Train(String number) {
         this.number = number;
