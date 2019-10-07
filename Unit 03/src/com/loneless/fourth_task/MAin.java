@@ -14,7 +14,6 @@ public class MAin {
         cal.setTime(date);
         Time time = new Time(cal.get(Calendar.HOUR),cal.get(Calendar.MINUTE),cal.get(Calendar.SECOND));
         do {
-
                 try {
                     System.out.println("Enter\n1 to set new time\n2 to set hour\n3 to set min\n4 to set sec\n" +
                             "5 to see time\n-1 to exit");

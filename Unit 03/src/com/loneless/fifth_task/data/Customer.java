@@ -1,7 +1,7 @@
-package com.loneless.fifth_task;
+package com.loneless.fifth_task.data;
 
 public class Customer {
-    private String id;
+    private long id;
     private String surname;
     private String name;
     private String patronymic;
@@ -9,8 +9,19 @@ public class Customer {
     private long creditCardNumber;
     private long bankAccountNumber;
 
-    public Customer(String id, String surname, String name, String patronymic, String address, long creditCardNumber, long bankAccountNumber) {
+    public Customer(long id, String surname, String name, String patronymic, String address, long creditCardNumber,
+                    long bankAccountNumber) {
         this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.address = address;
+        this.creditCardNumber = creditCardNumber;
+        this.bankAccountNumber = bankAccountNumber;
+    }
+
+    public Customer( String surname, String name, String patronymic, String address, long creditCardNumber,
+                    long bankAccountNumber) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -21,11 +32,11 @@ public class Customer {
 
     public Customer() { }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
