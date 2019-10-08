@@ -1,7 +1,5 @@
 package com.loneless.third_task;
 
-import com.loneless.third_task.counter.Counter;
-
 import java.util.Scanner;
 
 public class Main {
@@ -48,7 +46,7 @@ public class Main {
                     }
                 }
                 catch (java.util.InputMismatchException e ){
-                    System.out.println("Enter a valid data");
+                    System.out.println("Enter a valid beans");
                     scanner.skip(".*\n");
                 }
             }

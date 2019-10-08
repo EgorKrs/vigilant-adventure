@@ -1,4 +1,6 @@
-package com.loneless.fourth_task.data;
+package com.loneless.fourth_task;
+
+import java.util.Objects;
 
 public class Time {
     private int hour;
@@ -67,5 +69,29 @@ public class Time {
     }
     public String getStringTime(){
         return this.hour+":"+this.min+":"+this.sec;
+    }
+
+    @Override
+    public String toString() {
+        return "Time{" +
+                "hour=" + hour +
+                ", min=" + min +
+                ", sec=" + sec +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Time time = (Time) o;
+        return hour == time.hour &&
+                min == time.min &&
+                sec == time.sec;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hour, min, sec);
     }
 }

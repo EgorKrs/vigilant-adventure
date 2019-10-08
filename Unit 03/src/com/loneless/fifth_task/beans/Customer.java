@@ -1,4 +1,6 @@
-package com.loneless.fifth_task.data;
+package com.loneless.fifth_task.beans;
+
+import java.util.Objects;
 
 public class Customer {
     private long id;
@@ -12,16 +14,6 @@ public class Customer {
     public Customer(long id, String surname, String name, String patronymic, String address, long creditCardNumber,
                     long bankAccountNumber) {
         this.id = id;
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.address = address;
-        this.creditCardNumber = creditCardNumber;
-        this.bankAccountNumber = bankAccountNumber;
-    }
-
-    public Customer( String surname, String name, String patronymic, String address, long creditCardNumber,
-                    long bankAccountNumber) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -99,5 +91,23 @@ public class Customer {
                 ", creditCardNumber=" + creditCardNumber +
                 ", bankAccountNumber=" + bankAccountNumber +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id &&
+                creditCardNumber == customer.creditCardNumber &&
+                bankAccountNumber == customer.bankAccountNumber &&
+                Objects.equals(surname, customer.surname) &&
+                Objects.equals(name, customer.name) &&
+                Objects.equals(patronymic, customer.patronymic) &&
+                Objects.equals(address, customer.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, surname, name, patronymic, address, creditCardNumber, bankAccountNumber);
     }
 }

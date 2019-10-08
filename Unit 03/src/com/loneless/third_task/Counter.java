@@ -1,4 +1,4 @@
-package com.loneless.third_task.counter;
+package com.loneless.third_task;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -14,9 +14,7 @@ public class Counter {
         Random random=new Random();
         value=random.nextInt(range[1]);
     }
-    public Counter(int range[],int value){
 
-    }
     public boolean increaseValue(){
         if(value+1<range[1]) {
             value++;

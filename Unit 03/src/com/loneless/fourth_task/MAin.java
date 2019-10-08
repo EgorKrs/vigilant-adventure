@@ -1,7 +1,5 @@
 package com.loneless.fourth_task;
 
-import com.loneless.fourth_task.data.Time;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -46,7 +44,7 @@ public class MAin {
                             System.out.println(time.getStringTime()+"\n");
                     }
                 } catch (java.util.InputMismatchException e) {
-                    System.out.println("Enter a valid data");
+                    System.out.println("Enter a valid beans");
                     scanner.skip(".*\n");
                 }
         } while (true);
