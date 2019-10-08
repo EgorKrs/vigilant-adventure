@@ -1,10 +1,5 @@
 package com.loneless.fifth_task;
 
-import com.loneless.fifth_task.beans.Customer;
-import com.loneless.fifth_task.logic.CustomersListLogic;
-import com.loneless.fifth_task.wrapper.ListOfCustomers;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

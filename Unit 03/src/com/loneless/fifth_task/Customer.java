@@ -1,4 +1,4 @@
-package com.loneless.fifth_task.beans;
+package com.loneless.fifth_task;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
 .idea/
 target/
-vigilant-adventure.iml
 *.iml
+src/test/

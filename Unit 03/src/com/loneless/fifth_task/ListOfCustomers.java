@@ -1,9 +1,8 @@
-package com.loneless.fifth_task.wrapper;
+package com.loneless.fifth_task;
 
-import com.loneless.fifth_task.beans.Customer;
+import com.loneless.fifth_task.Customer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 

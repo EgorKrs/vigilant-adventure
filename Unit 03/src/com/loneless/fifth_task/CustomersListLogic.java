@@ -1,6 +1,6 @@
-package com.loneless.fifth_task.logic;
+package com.loneless.fifth_task;
 
-import com.loneless.fifth_task.beans.Customer;
+import com.loneless.fifth_task.Customer;
 
 import java.util.ArrayList;
 import java.util.Comparator;
