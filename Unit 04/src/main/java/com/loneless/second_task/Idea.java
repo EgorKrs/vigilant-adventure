@@ -1,5 +1,5 @@
 package com.loneless.second_task;
 
-public interface Idea {
+public interface Idea {// альтернативное название смысл
     StringBuilder receiveIdea();
 }
