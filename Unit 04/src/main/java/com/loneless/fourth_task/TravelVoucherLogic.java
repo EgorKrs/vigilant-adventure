@@ -4,8 +4,9 @@ package com.loneless.fourth_task;
 import com.loneless.fourth_task.comparators.*;
 import com.loneless.fourth_task.travel_vouchers.TravelVoucher;
 
-import java.util.ArrayList;
+
 import java.util.Comparator;
+import java.util.List;
 
 public class TravelVoucherLogic {
     private static final TravelVoucherLogic instance =new TravelVoucherLogic();
@@ -13,7 +14,7 @@ public class TravelVoucherLogic {
     public static TravelVoucherLogic getInstance() {
         return instance;
     }
-    public void sort(String nameOfField, ArrayList<TravelVoucher> vouchers){
+    public void sort(String nameOfField, List<TravelVoucher> vouchers){
         Comparator<TravelVoucher> voucherComparator;
         switch (nameOfField) {
             case "destination":
@@ -31,8 +32,10 @@ public class TravelVoucherLogic {
             case "supply":
                 voucherComparator = new CompareBySupply();
                 break;
-                default: voucherComparator=new CompareById();
+            case "Id":
+                voucherComparator=new CompareById();
                 break;
+                default:return;
         }
         vouchers.sort(voucherComparator);
     }

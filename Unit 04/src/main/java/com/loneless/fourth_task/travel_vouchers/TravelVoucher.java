@@ -30,32 +30,50 @@ public abstract class  TravelVoucher {
         return destination;
     }
 
-    public void setDestination(String destination) {
+    public boolean setDestination(String destination) {
         this.destination = destination;
+        return true;
     }
 
     public int getTripLength() {
         return tripLength;
     }
 
-    public void setTripLength(int tripLength) {
+    public boolean setTripLength(int tripLength) {
         this.tripLength = tripLength;
+        return true;
     }
 
     public String getTransport() {
         return transport;
     }
 
-    public void setTransport(String transport) {
+    public boolean setTransport(String transport) {
         this.transport = transport;
+        return true;
     }
 
     public String getSupply() {
         return supply;
     }
 
-    public void setSupply(String supply) {
+    public boolean setSupply(String supply) {
         this.supply = supply;
+        return true;
+    }
+
+
+    public Object[] receivePossibleDestination(){
+        return null;
+    }
+    public int[] receivePossibleLength(){
+        return null;
+    }
+    public Object[] receivePossibleTransport(){
+        return null;
+    }
+    public Object[] receivePossibleSupply(){
+        return null;
     }
 
     @Override
