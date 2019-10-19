@@ -1,14 +1,14 @@
-package com.loneless.fourth_task.travel_vouchers;
+package com.loneless.fourth_task.entity;
 
 import java.util.Objects;
 
 public abstract class  TravelVoucher {
-    protected int id;
-    protected int cost;
-    protected String destination;
-    protected int tripLength;
-    protected String transport;
-    protected String supply;
+    private int id;
+    private double cost;
+    private String destination;
+    private int tripLength;
+    private String transport;
+    private String supply;
 
     public int getId() {
         return id;
@@ -18,12 +18,16 @@ public abstract class  TravelVoucher {
         this.id = id;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public void addToCost(double prise){
+        cost+=prise;
     }
 
     public String getDestination() {
@@ -69,9 +73,11 @@ public abstract class  TravelVoucher {
     public int[] receivePossibleLength(){
         return null;
     }
+
     public Object[] receivePossibleTransport(){
         return null;
     }
+
     public Object[] receivePossibleSupply(){
         return null;
     }

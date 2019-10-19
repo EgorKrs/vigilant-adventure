@@ -2,18 +2,22 @@ package com.loneless.fourth_task;
 
 
 import com.loneless.fourth_task.comparators.*;
-import com.loneless.fourth_task.travel_vouchers.TravelVoucher;
+import com.loneless.fourth_task.entity.TravelVoucher;
 
 
 import java.util.Comparator;
 import java.util.List;
 
 public class TravelVoucherLogic {
+
     private static final TravelVoucherLogic instance =new TravelVoucherLogic();
+
     private TravelVoucherLogic(){}
+
     public static TravelVoucherLogic getInstance() {
         return instance;
     }
+
     public void sort(String nameOfField, List<TravelVoucher> vouchers){
         Comparator<TravelVoucher> voucherComparator;
         switch (nameOfField) {

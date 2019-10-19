@@ -1,6 +1,6 @@
 package com.loneless.fourth_task.comparators;
 
-import com.loneless.fourth_task.travel_vouchers.TravelVoucher;
+import com.loneless.fourth_task.entity.TravelVoucher;
 
 import java.util.Comparator;
 
