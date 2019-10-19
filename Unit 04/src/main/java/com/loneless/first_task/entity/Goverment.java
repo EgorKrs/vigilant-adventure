@@ -1,4 +1,4 @@
-package com.loneless.first_task.regional_units;
+package com.loneless.first_task.entity;
 
 import com.loneless.first_task.Administrative;
 

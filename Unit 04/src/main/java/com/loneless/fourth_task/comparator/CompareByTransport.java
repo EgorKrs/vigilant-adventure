@@ -1,4 +1,4 @@
-package com.loneless.fourth_task.comparators;
+package com.loneless.fourth_task.comparator;
 
 import com.loneless.fourth_task.entity.TravelVoucher;
 

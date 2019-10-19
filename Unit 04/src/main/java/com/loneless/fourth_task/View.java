@@ -8,21 +8,20 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class View {
-    AtomicInteger id;
+    private AtomicInteger id;
 
-    View(AtomicInteger id){
+    public View(AtomicInteger id){
         this.id=id;
     }
 
     public void menu(List<TravelVoucher> vouchers){
         Scanner scanner = new Scanner(System.in);
-        addSomeNotes(vouchers);
         System.out.println("Добро пожаловать в " + DataGenerator.getInstance().getFaker().company().name() +
                 ". Мы рады помочь в выборе вашей путевки в мир рандомных чудес");
         while (true) {
             System.out.println("Введите \n1 для создания новой путевки\n2 для сортировки путевок" +
-                    "\n3 для просмотра всех записей\n4 для выборки данных\n-1 для выхода");
-            switch (validChoice(scanner, 4)) {
+                    "\n3 для просмотра всех записей\n4 для выборки данных\n5 для поиска в диапазоне\n-1 для выхода");
+            switch (validChoice(scanner, 5)) {
                 case -1:
                     return;
                 case 1:
@@ -41,18 +40,32 @@ public class View {
                     break;
                 case 4:
                     System.out.println("Введите данные для выборки");
-                    takeSomeNotes(scanner.nextLine(),vouchers);
+                    printVoucher(TravelVoucherLogic.getInstance().findNotes(scanner.nextLine(),vouchers));
                     break;
+                case 5:
+                    System.out.println("Введите диапазон значений");
+                    printVoucher(TravelVoucherLogic.getInstance().findNotes(scanner.nextLine(),scanner.nextLine(),vouchers));
+
             }
         }
     }
-
     private void printVoucher(TravelVoucher voucher) {
         System.out.print("\nID: " + voucher.getId() + "\nЦена: ");
         System.out.printf("%8.2f", voucher.getCost());
         System.out.println(" $\nПуть назначения: " +
                 voucher.getDestination() + "\nДлинна путешествия: " + voucher.getTripLength() + " дн.\nТранспорт: " +
                 voucher.getTransport() + "\nЕда: " + voucher.getSupply() + "\n");
+    }
+
+    private void printVoucher(List<TravelVoucher> vouchers) {
+        for (TravelVoucher voucher :
+                vouchers) {
+            System.out.print("\nID: " + voucher.getId() + "\nЦена: ");
+            System.out.printf("%8.2f", voucher.getCost());
+            System.out.println(" $\nПуть назначения: " +
+                    voucher.getDestination() + "\nДлинна путешествия: " + voucher.getTripLength() + " дн.\nТранспорт: " +
+                    voucher.getTransport() + "\nЕда: " + voucher.getSupply() + "\n");
+        }
     }
 
     private  int validChoice(Scanner scanner, int max) {
@@ -168,87 +181,4 @@ public class View {
         vouchers.add(voucher);
     }
 
-    private void addSomeNotes(List<TravelVoucher> vouchers) {
-        for (int i = 0; i < 5; i++) {
-            TravelVoucher voucher;
-            switch (DataGenerator.getInstance().getRandom().nextInt(4)) {
-                case 0:
-                    voucher = new Recreation();
-                    break;
-                case 1:
-                    voucher = new Excursion();
-                    break;
-                case 2:
-                    voucher = new Treatment();
-                    break;
-                case 3:
-                    voucher = new Shopping();
-                    break;
-                case 4:
-                    voucher = new Cruise();
-                    break;
-                default:
-                    voucher = new Cruise();
-                    break;
-            }
-
-            voucher.setDestination((String) voucher.receivePossibleDestination()
-                    [DataGenerator.getInstance().getRandom().nextInt(voucher.receivePossibleDestination().length - 1)]);
-
-            voucher.setTripLength(voucher.receivePossibleLength()
-                    [DataGenerator.getInstance().getRandom().nextInt(voucher.receivePossibleLength().length - 1)]);
-
-            voucher.setTransport((String) voucher.receivePossibleTransport()
-                    [DataGenerator.getInstance().getRandom().nextInt(voucher.receivePossibleTransport().length - 1)]);
-
-            voucher.setSupply((String) voucher.receivePossibleSupply()
-                    [DataGenerator.getInstance().getRandom().nextInt(voucher.receivePossibleSupply().length - 1)]);
-            voucher.setId(id.getAndIncrement());
-            vouchers.add(voucher);
-        }
-    }
-
-    private  void takeSomeNotes(String note,List<TravelVoucher> vouchers) {
-
-        try {
-            int parseInt = Integer.parseInt(note);
-            double parseDouble = Double.parseDouble(note);
-            vouchers.forEach(voucher -> {
-                final boolean find;
-                if (parseInt == voucher.getId()) {
-                    find = true;
-                } else if (parseDouble == voucher.getCost()) {
-                    find = true;
-                } else if (note.equals(voucher.getDestination())) {
-                    find = true;
-                } else if (parseInt == voucher.getTripLength()) {
-                    find = true;
-                } else if (note.equals(voucher.getTransport())) {
-                    find = true;
-                } else if (note.equals(voucher.getSupply())) {
-                    find = true;
-                } else find = false;
-                if (find) {
-                    printVoucher(voucher);
-                }
-
-            });
-
-        } catch (NumberFormatException e) {
-            vouchers.forEach(voucher -> {
-                final boolean find;
-                if (note.equals(voucher.getDestination())) {
-                    find = true;
-                } else if (note.equals(voucher.getTransport())) {
-                    find = true;
-                } else if (note.equals(voucher.getSupply())) {
-                    find = true;
-                } else find = false;
-                if (find) {
-                    printVoucher(voucher);
-                }
-            });
-
-        }
-    }
 }
