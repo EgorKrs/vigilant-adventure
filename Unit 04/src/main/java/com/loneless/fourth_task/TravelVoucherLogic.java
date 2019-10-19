@@ -62,9 +62,7 @@ public class TravelVoucherLogic {
                     find = true;
                 } else if (note.equals(voucher.getTransport())) {
                     find = true;
-                } else if (note.equals(voucher.getSupply())) {
-                    find = true;
-                } else find = false;
+                } else find = note.equals(voucher.getSupply());
                 if (find) {
                     listOfElemThatWeNeed.add(voucher);
                 }
@@ -78,9 +76,7 @@ public class TravelVoucherLogic {
                     find = true;
                 } else if (note.equals(voucher.getTransport())) {
                     find = true;
-                } else if (note.equals(voucher.getSupply())) {
-                    find = true;
-                } else find = false;
+                } else find = note.equals(voucher.getSupply());
                 if (find) {
                     listOfElemThatWeNeed.add(voucher);
                 }
@@ -109,9 +105,7 @@ public class TravelVoucherLogic {
                     find = true;
                 } else if (left.compareTo(voucher.getTransport())>=0&&right.compareTo(voucher.getTransport())<=0) {
                     find = true;
-                } else if (left.compareTo(voucher.getSupply())>=0&&right.compareTo(voucher.getSupply())<=0) {
-                    find = true;
-                } else find = false;
+                } else find = left.compareTo(voucher.getSupply()) >= 0 && right.compareTo(voucher.getSupply()) <= 0;
                 if (find) {
                     listOfElemThatWeNeed.add(voucher);
                 }
@@ -125,9 +119,7 @@ public class TravelVoucherLogic {
                     find = true;
                 } else if (left.compareTo(voucher.getTransport())<=0&&right.compareTo(voucher.getTransport())>=0) {
                     find = true;
-                } else if (left.compareTo(voucher.getSupply())<=0&&right.compareTo(voucher.getSupply())>=0) {
-                    find = true;
-                } else find = false;
+                } else find = left.compareTo(voucher.getSupply()) <= 0 && right.compareTo(voucher.getSupply()) >= 0;
                 if (find) {
                     listOfElemThatWeNeed.add(voucher);
                 }

@@ -1,5 +1,6 @@
 package com.loneless.fourth_task;
 
+import com.loneless.DataGenerator;
 import com.loneless.fourth_task.entity.*;
 
 import java.util.Arrays;

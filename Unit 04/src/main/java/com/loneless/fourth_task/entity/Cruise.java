@@ -1,6 +1,6 @@
 package com.loneless.fourth_task.entity;
 
-import com.loneless.fourth_task.DataGenerator;
+import com.loneless.DataGenerator;
 
 public class Cruise extends TravelVoucher{
     public enum PossibleDestination{

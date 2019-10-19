@@ -4,5 +4,6 @@ public interface Administrative {
     // описание поведение территориальной еденицы
     double countSize();
     int receiveQuantityOfIncomingTerritories();
+    StringBuilder receiveSmallerCenter();
     String receiveHeadTerritory();
 }

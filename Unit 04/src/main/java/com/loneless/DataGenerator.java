@@ -1,4 +1,4 @@
-package com.loneless.fourth_task;
+package com.loneless;
 
 import com.github.javafaker.Faker;
 
