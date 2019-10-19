@@ -3,6 +3,7 @@ package com.loneless.second_task.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Sentence  {
 
@@ -30,5 +31,25 @@ public class Sentence  {
     }
     public void supplementation(Word word){
         words.add(word);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sentence sentence = (Sentence) o;
+        return Objects.equals(words, sentence.words);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(words);
+    }
+
+    @Override
+    public String toString() {
+        return "Sentence{" +
+                "words=" + words +
+                '}';
     }
 }
