@@ -1,11 +1,7 @@
 package com.loneless.first_task;
 
 import com.loneless.DataGenerator;
-import com.loneless.first_task.entity.City;
-import com.loneless.first_task.entity.District;
-import com.loneless.first_task.entity.Government;
-import com.loneless.first_task.entity.Region;
-
+import com.loneless.first_task.entity.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
