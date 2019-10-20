@@ -1,6 +1,4 @@
-package com.loneless.third_task;
-
-import com.loneless.third_task.accounts.Account;
+package com.loneless.third_task.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,8 +7,14 @@ import java.util.Objects;
 
 public class Client {
     private int id;
-    private String[] fullName;
+
+    private String fullName;
+
     private List<Account> accounts=new ArrayList<>();
+
+    public void addAccount(Account account){
+        accounts.add(account);
+    }
 
     public int getId() {
         return id;
@@ -20,11 +24,11 @@ public class Client {
         this.id = id;
     }
 
-    public String[] getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(String[] fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
@@ -37,32 +41,26 @@ public class Client {
     }
 
     @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", fullName=" + Arrays.toString(fullName) +
-                ", accounts=" + accounts +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return id == client.id &&
-                Arrays.equals(fullName, client.fullName) &&
+                Objects.equals(fullName, client.fullName) &&
                 Objects.equals(accounts, client.accounts);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, accounts);
-        result = 31 * result + Arrays.hashCode(fullName);
-        return result;
+        return Objects.hash(id, fullName, accounts);
     }
 
-    public boolean addAccount(){
-        return true;// true если нет заблокированных аккаунтов
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", accounts=" + accounts +
+                '}';
     }
 }
