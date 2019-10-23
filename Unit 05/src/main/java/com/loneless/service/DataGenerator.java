@@ -35,7 +35,7 @@ public class DataGenerator {
         return uniTransactionID;
     }
 
-    public static int getUniID() {
+    public static int getUniTrID() {
         return uniTransactionID.incrementAndGet();
     }
 

@@ -8,6 +8,7 @@ import com.loneless.entity.Transaction;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -25,7 +26,8 @@ public class Demo {
                     nextInt(Category.values().length)]);
             Calendar calendar = new GregorianCalendar();
             calendar.add(calendar.WEEK_OF_MONTH,-1);
-            change.setDate(DataGenerator.getInstance().getFaker().date().between(calendar.getTime(),new Date()));
+            change.setDate(new java.sql.Date(DataGenerator.getInstance().getFaker().date().between(calendar.getTime(),
+                    new Date()).getTime()).toLocalDate());
             change.setPlanned(DataGenerator.getInstance().getRandom().nextBoolean());
             change.setSum(BigDecimal.valueOf(DataGenerator.getInstance().
                     getFaker().number().randomDouble(100000,-10000,10000)));

@@ -2,20 +2,21 @@ package com.loneless.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class Transaction implements Serializable {
-    int ID;
-    Date date;
-    Category category;
-    BigDecimal sum;
-    boolean planned;
+    private int ID;
+    private LocalDate date;
+    private Category category;
+    private BigDecimal sum;
+    private boolean planned;
     private static final long serialVersionUID=32L;
     public Transaction() {
     }
 
-    public Transaction(int ID, Date date, Category category, BigDecimal sum, boolean planned) {
+    public Transaction(int ID, LocalDate date, Category category, BigDecimal sum, boolean planned) {
         this.ID = ID;
         this.date = date;
         this.category = category;
@@ -31,11 +32,11 @@ public class Transaction implements Serializable {
         this.ID = ID;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
