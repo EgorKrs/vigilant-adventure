@@ -5,15 +5,9 @@ import com.loneless.entity.UserPrivateData;
 
 import java.io.*;
 
-public class WorkWithfile {
+public class WorkWithFile {
 
-    private static final WorkWithfile instance=new WorkWithfile();
-
-    private WorkWithfile(){}
-
-    public static WorkWithfile getInstance(){
-        return instance;
-    }
+    WorkWithFile(){}
 
     public void writeObject(TransactionWhipper transactionWhipper, String fileName) throws IOException {
         ObjectOutputStream outputStream=new  ObjectOutputStream(new FileOutputStream(fileName));

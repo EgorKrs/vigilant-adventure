@@ -3,7 +3,6 @@ package com.loneless.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 public class Transaction implements Serializable {

@@ -5,22 +5,10 @@ import com.loneless.entity.Transaction;
 import com.loneless.entity.TransactionWhipper;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-//    Transaction
-//    private int ID;
-//    private Date date;
-//    private Category category;
-//    private BigDecimal sum;
-//    private boolean planned;
-//
-//
 public class Logic {
     private static Logic ourInstance = new Logic();
 
@@ -48,6 +36,7 @@ public class Logic {
                 new BigDecimal(sum),
                 Boolean.valueOf(planned));
     }
+
     public void addTransaction(TransactionWhipper transactionWhipper,Transaction transaction){
         transactionWhipper.getTransactions().add(transaction);
     }
@@ -58,7 +47,8 @@ public class Logic {
                                       Transaction oldTransaction){
         return Collections.replaceAll(transactionWhipper.getTransactions(),oldTransaction,newTransaction);
     }
-    public List<Transaction> findOllTransactionToCurrentDate(LocalDate dataToFind,TransactionWhipper transactionWhipper){
+    public List<Transaction> findOllTransactionToCurrentDate(LocalDate dataToFind,
+                                                             TransactionWhipper transactionWhipper){
         List<Transaction> finderTransaction=new LinkedList<>();
         for (Transaction transaction:
              transactionWhipper.getTransactions()) {

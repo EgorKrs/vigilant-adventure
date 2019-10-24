@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class DataGenerator {
+
     private static final DataGenerator instance =new DataGenerator();
 
     private static final Faker faker =new Faker();// прикольная "генерация" объектов - это для базовых значений
