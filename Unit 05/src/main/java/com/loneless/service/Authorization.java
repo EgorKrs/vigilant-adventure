@@ -1,6 +1,6 @@
 package com.loneless.service;
 
-import com.loneless.dao.Factory;
+import com.loneless.dao.FactoryDAO;
 import com.loneless.entity.UserPrivateData;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class Authorization {
     public boolean isExist(UserPrivateData user) throws IOException, ClassNotFoundException {
         UserPrivateData existingUser=new UserPrivateData();
 
-        existingUser= Factory.getFileWorker().readObject(existingUser,"UserData.txt");
+        existingUser= FactoryDAO.getFileWorker().readObject(existingUser,"UserData.txt");
         return existingUser.equals(user);
     }
 }

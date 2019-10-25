@@ -1,22 +1,12 @@
 package com.loneless;
 
-import com.loneless.dao.Factory;
-import com.loneless.entity.Transaction;
 import com.loneless.entity.TransactionWhipper;
-import com.loneless.entity.UserPrivateData;
-import com.loneless.service.Logic;
 import com.loneless.view.Demo;
 import com.loneless.view.Menu;
 
 
 import java.io.*;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
 
 public class Launcher {
     static TransactionWhipper transactionWhipper =new TransactionWhipper();
@@ -33,7 +23,7 @@ public class Launcher {
 //        LocalDate date = LocalDate.parse(string, formatter);
 //        System.out.println(date); // 2010-01-02
 //        demo.addDefaultUserToFile();
-//        System.out.println(Factory.getFileWorker().readObject(new UserPrivateData(),"UserData.txt"));
+//        System.out.println(FactoryDAO.getFileWorker().readObject(new UserPrivateData(),"UserData.txt"));
         Menu menu=new Menu();
         menu.startMenu();
     }

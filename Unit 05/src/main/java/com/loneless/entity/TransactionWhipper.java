@@ -1,5 +1,8 @@
 package com.loneless.entity;
 
+import com.loneless.dao.FactoryDAO;
+
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,8 +10,14 @@ import java.util.List;
 public class TransactionWhipper implements Serializable {
     private List<Transaction> transactions =new LinkedList<>();
     private static final long serialVersionUID=33L;
-    public TransactionWhipper(){
+    private static TransactionWhipper instance = null;
 
+    public TransactionWhipper() throws IOException, ClassNotFoundException {
+        FactoryDAO.getFileWorker().readObject(instance,"someData.txt");
+    }
+
+    public static TransactionWhipper getInstance() {
+        return instance;
     }
 
     public TransactionWhipper(List<Transaction> transactionList) {

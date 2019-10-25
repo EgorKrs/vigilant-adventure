@@ -46,6 +46,9 @@ public class Transaction implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
+    public void setCategory(String category) {
+        this.category = Category.valueOf(category);
+    }
 
     public BigDecimal getSum() {
         return sum;

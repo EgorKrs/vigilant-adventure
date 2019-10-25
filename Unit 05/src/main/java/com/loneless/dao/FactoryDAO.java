@@ -1,11 +1,11 @@
 package com.loneless.dao;
 
-public class Factory {
-    private final static Factory instance =new Factory();
-    private Factory(){}
+public class FactoryDAO {
+    private final static FactoryDAO instance =new FactoryDAO();
+    private FactoryDAO(){}
     private final static WorkWithFile fileWorker=new WorkWithFile();
 
-    public static Factory getInstance(){
+    public static FactoryDAO getInstance(){
         return instance;
     }
 

@@ -1,6 +1,6 @@
 package com.loneless.view;
 
-import com.loneless.dao.Factory;
+import com.loneless.dao.FactoryDAO;
 import com.loneless.entity.TransactionWhipper;
 import com.loneless.entity.UserPrivateData;
 import com.loneless.service.DataGenerator;
@@ -22,7 +22,7 @@ public class Demo {
             change=createDefaultTransaction();
             transactionWhipper.getTransactions().add(change);
         }
-        Factory.getFileWorker().writeObject(transactionWhipper,"someData.txt");
+        FactoryDAO.getFileWorker().writeObject(transactionWhipper,"someData.txt");
     }
 
     public Transaction createDefaultTransaction(){
@@ -40,12 +40,12 @@ public class Demo {
     }
 
     public TransactionWhipper defaultTransactionReadFromFile(String fileName,TransactionWhipper transactionWhipper) throws IOException, ClassNotFoundException {
-        return Factory.getFileWorker().readObject(transactionWhipper,fileName);
+        return FactoryDAO.getFileWorker().readObject(transactionWhipper,fileName);
     }
 
     public void addDefaultUserToFile() throws IOException {
         UserPrivateData userPrivateData=createDefaultUser();
-        Factory.getFileWorker().writeObject(createDefaultUser(),"UserData.txt");
+        FactoryDAO.getFileWorker().writeObject(createDefaultUser(),"UserData.txt");
     }
 
     public UserPrivateData createDefaultUser(){
