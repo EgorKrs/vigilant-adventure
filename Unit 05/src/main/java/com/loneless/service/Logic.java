@@ -75,11 +75,8 @@ public class Logic {
         List<Transaction> finedTransaction=new LinkedList<>();
        transactions.stream()
                .filter(Objects::nonNull)
-               .filter(transaction -> transaction.getSum().equals(transactionToFind.getSum()))
-               .filter(transaction -> transaction.getCategory().equals(transactionToFind.getCategory()))
-               .filter(transaction -> transaction.getDate().equals(transactionToFind.getDate()))
-               .filter(transaction -> transaction.isPlanned()==(transactionToFind.isPlanned()))
-                .forEach(finedTransaction::add);
+               .filter(transaction -> transaction.getID()==(transactionToFind.getID()))
+               .forEach(finedTransaction::add);
        return finedTransaction;
     }
 }

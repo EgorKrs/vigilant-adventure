@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 
 public class Menu {
 
@@ -62,6 +64,7 @@ public class Menu {
             }
         }
     }
+
     public UserPrivateData authorisation() throws IOException {
         UserPrivateData userPrivateData=new UserPrivateData();
         System.out.println("Введите логин");
@@ -77,25 +80,10 @@ public class Menu {
             System.out.println("Введите допустимую транзакцию");
             transaction=new Transaction();
             transaction.setID(DataGenerator.getUniTrID());
-            System.out.println("Введите сумму транзакции");
-            transaction.setSum(Validation.getInstance().receiveBigDecimalFromString(reader.readLine()));
-            System.out.println("Выберите категорию из предложенных");
-            String category = reader.readLine();
-            if (Validation.getInstance().isSuchCategoryExist(category))
-                transaction.setCategory(category.toUpperCase());
-            else {
-                System.out.println("Не верная категория");
-            }
-            System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
-            String data = reader.readLine();
-            LocalDate date;
-            if ((date = Validation.getInstance().validData(data)) != null)
-                transaction.setDate(date);
-            else {
-                System.out.println("Не верная дата");
-            }
-            System.out.println("Введите true если эта транзакция является плановой");
-            transaction.setPlanned(Boolean.valueOf(reader.readLine()));
+            enterSum(transaction);
+            enterCategory(transaction);
+            enterData(transaction);
+            enterPlaned(transaction);
         }
         return transaction;
     }
@@ -146,5 +134,85 @@ public class Menu {
         }
         return transaction;
     }
+
+    public Transaction chooseTransactionFromList(List<Transaction> transactions) throws IOException {
+        System.out.println("Выберите транзацию по ID");
+        for (Transaction transaction :
+                transactions) {
+            System.out.println(transaction);
+        }
+        int id=-1;
+        while (id<0) {
+            System.out.println("Введите ID");
+            id = Integer.parseInt(reader.readLine());
+        }
+        for (Transaction transaction :
+                transactions) {
+            if(transaction.getID()==id){
+                return transaction;
+            }
+        }
+        return null;
+    }
+    private boolean enterPlaned(Transaction transaction) throws IOException {
+        System.out.println("Введите true если эта транзакция является плановой");
+        transaction.setPlanned(Boolean.valueOf(reader.readLine()));
+        return true;
+    }
+    private boolean enterCategory(Transaction transaction) throws IOException {
+        boolean ok=false;
+        System.out.println("Выберите категорию из предложенных");
+        String category = reader.readLine();
+        if (Validation.getInstance().isSuchCategoryExist(category)) {
+            transaction.setCategory(category.toUpperCase());
+            ok=true;
+        }
+        else {
+            System.out.println("Не верная категория");
+        }
+        return ok;
+    }
+    private boolean enterData(Transaction transaction) throws IOException {
+        boolean ok=false;
+        System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
+        String data = reader.readLine();
+        LocalDate date;
+        if ((date = Validation.getInstance().validData(data)) != null) {
+            transaction.setDate(date);
+            ok=true;
+        }
+        else {
+            System.out.println("Не верная дата");
+        }
+        return ok;
+    }
+    private boolean enterSum(Transaction transaction) throws IOException {
+        System.out.println("Введите сумму транзакции");
+        transaction.setSum(Validation.getInstance().receiveBigDecimalFromString(reader.readLine()));
+        return true;
+    }
+
+    public Transaction editTransaction(Transaction transaction) throws IOException {
+        System.out.println("Введите\n1 для редактирования даты\n2 для редактирования категории\n" +
+                "3 для редактирования суммы\n4 для редактирования запланированности");
+        switch (checkEnter(4)){
+            case 1:
+                enterData(transaction);
+                break;
+            case 2:
+                enterCategory(transaction);
+                break;
+            case 3:
+                enterSum(transaction);
+                break;
+            case 4:
+                enterPlaned(transaction);
+                break;
+                default:
+                    System.out.println("Неверный выбор");
+        }
+        return transaction;
+    }
+
 
 }
