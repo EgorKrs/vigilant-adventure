@@ -79,4 +79,6 @@ public class Logic {
                .forEach(finedTransaction::add);
        return finedTransaction;
     }
+
+
 }
