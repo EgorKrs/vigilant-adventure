@@ -16,20 +16,7 @@ public class Validation {
         return instance;
     }
 
-    public boolean isTransactionNull(Transaction transaction){
-        boolean n=true;
-        if(transaction==null)
-            return true;
-        else if(transaction.getDate()!=null)
-            n=false;
-        else if(transaction.getCategory()!=null){
-            n=false;
-        }
-        else if( transaction.getSum() != null){
-            n=false;
-        }
-        return n;
-    }
+
 
     public boolean isTransactionValid(Transaction transaction){
         if(transaction==null)
@@ -45,10 +32,14 @@ public class Validation {
     }
 
 
-    public LocalDate validData(String string){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy:HH:mm", Locale.ENGLISH);
-        return  LocalDate.parse(string, formatter);
-
+    public LocalDate validData(String string) throws ServiceException {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy:HH:mm", Locale.ENGLISH);
+            return LocalDate.parse(string, formatter);
+        }
+        catch (java.time.format.DateTimeParseException e){
+            throw new ServiceException("Невеный ввод даты. Пример корректного форматы даты 01-Jan-2019:20:20 "+e);
+        }
     }
     public boolean isSuchCategoryExist(String name){
         for (Category category :
@@ -59,8 +50,13 @@ public class Validation {
         }
         return false;
     }
-    public BigDecimal receiveBigDecimalFromString(String num){
-        return new BigDecimal(num);
+    public BigDecimal receiveBigDecimalFromString(String num) throws ServiceException {
+        try {
+            return new BigDecimal(num);
+        }
+        catch (java.lang.NumberFormatException e){
+            throw new ServiceException("Оцибка при приведении строки в BigDecimal при валидации "+e);
+        }
     }
 
 }

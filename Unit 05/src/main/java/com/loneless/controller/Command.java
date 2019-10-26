@@ -1,7 +1,8 @@
 package com.loneless.controller;
 
-import java.io.IOException;
+
+import com.loneless.view.ViewException;
 
 public interface Command {
-    boolean execute() throws IOException, ClassNotFoundException;
+    boolean execute() throws ViewException, ControllerException;
 }

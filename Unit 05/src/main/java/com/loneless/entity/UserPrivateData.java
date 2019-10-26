@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class UserPrivateData implements Serializable {
-    String login;
-    String password;
+    private String login;
+    private String password;
     private static final long serialVersionUID=34L;
     public UserPrivateData(String login, String password) {
         this.login = login;

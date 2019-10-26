@@ -1,10 +1,12 @@
 package com.loneless.view;
 
 import com.loneless.controller.CommandProvider;
+import com.loneless.controller.ControllerException;
 import com.loneless.entity.Category;
 import com.loneless.entity.Transaction;
 import com.loneless.entity.UserPrivateData;
 import com.loneless.service.DataGenerator;
+import com.loneless.service.ServiceException;
 import com.loneless.service.Validation;
 
 import java.io.BufferedReader;
@@ -33,31 +35,38 @@ public class Menu {
         this.reader=reader;
     }
 
-    public void startMenu() throws IOException, ClassNotFoundException {
-        while (true){
-            System.out.println("Введите\n1 для работы с вашими транзакцией\n2 для просмота транзакций в интервале\n" +
-                    "3 для просмотра остатков финансов\n4 для просмотра плановых транзакций\n-1 для выхода");
-            switch (checkEnter(4)){
-                case -1:
-                    return;
-                case 1:
-                    workWithTransaction();
-                    break;
-                case 2:
-                    chooseInterval();
-                    break;
-                case 3:
-                    CommandProvider.getCommandProvider().getCommand("CALCULATE_CURRENT_SUM").execute();
-                    break;
-                case 4:
-                    CommandProvider.getCommandProvider().getCommand("Receive Planned Transaction").execute();
-                    break;
+    public void startMenu() throws  ViewException {
+
+        while (true) {
+            try {
+                System.out.println("Введите\n1 для работы с вашими транзакцией\n2 для просмота транзакций в интервале\n" +
+                        "3 для просмотра остатков финансов\n4 для просмотра плановых транзакций\n-1 для выхода");
+                switch (checkEnter(4)) {
+                    case -1:
+                        return;
+                    case 1:
+                        workWithTransaction();
+                        break;
+                    case 2:
+                        chooseInterval();
+                        break;
+                    case 3:
+                        CommandProvider.getCommandProvider().getCommand("CALCULATE_CURRENT_SUM").execute();
+                        break;
+                    case 4:
+                        CommandProvider.getCommandProvider().getCommand("Receive Planned Transaction").execute();
+                        break;
                     default:
                         System.out.println("Не верный выбор");
-            }        }
+                }
+            } catch (ControllerException e) {
+                System.out.println(e.getException());
+            }
+
+        }
     }
 
-    private int checkEnter(int possibleLength) throws IOException {
+    private int checkEnter(int possibleLength) throws ViewException {
         int choice;
         while (true) {
             try {
@@ -68,95 +77,44 @@ public class Menu {
             }
             catch(NumberFormatException e){
                 System.out.println("Введите целое число не больше "+possibleLength);
+            } catch (IOException e) {
+                throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
             }
+
         }
     }
 
-    public UserPrivateData authorisation() throws IOException {
-        UserPrivateData userPrivateData=new UserPrivateData();
-        System.out.println("Введите логин");
-        userPrivateData.setLogin(reader.readLine());
-        System.out.println("Введите пароль");
-        userPrivateData.setPassword(reader.readLine());
-        return  userPrivateData;
+    public UserPrivateData authorisation() throws ViewException {
+        try {
+            UserPrivateData userPrivateData = new UserPrivateData();
+            System.out.println("Введите логин");
+            userPrivateData.setLogin(reader.readLine());
+            System.out.println("Введите пароль");
+            userPrivateData.setPassword(reader.readLine());
+            return userPrivateData;
+        }
+        catch (IOException e) {
+            throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
+        }
     }
 
-    public Transaction receiveDataForTransaction() throws IOException {
-        Transaction transaction=null;
-        while (!Validation.getInstance().isTransactionValid(transaction)) {
-            System.out.println("Введите допустимую транзакцию");
-            transaction=new Transaction();
-            transaction.setID(DataGenerator.getUniTrID());
-            enterSum(transaction);
-            enterCategory(transaction);
-            enterData(transaction);
-            enterPlaned(transaction);
-        }
-        return transaction;
-    }
-
-    public Transaction receiveTransactionToFind() throws IOException {
-        Transaction transaction =null;
-        while (Validation.getInstance().isTransactionNull(transaction)) {
-            transaction = new Transaction();
-            System.out.println("Хотя бы 1 поле транзакции должно быть введено");
-            System.out.println("Введите данные транзакции которую хотите найти");
-            System.out.println("Введите ID");
-            String data = reader.readLine();
-            if (data != null || data.length() != 0) {
-                transaction.setID(Integer.parseInt(data));
-            }
-            System.out.println("Введите сумму транзакции");
-            data = reader.readLine();
-            if (data != null || data.length() != 0) {
-                transaction.setSum(Validation.getInstance().receiveBigDecimalFromString(reader.readLine()));
-            }
-            System.out.println("Выберите категорию из предложенных");
-            data = reader.readLine();
-            if (data != null || data.length() != 0) {
-                if (Validation.getInstance().isSuchCategoryExist(data))
-                    transaction.setCategory(data.toUpperCase());
-                else {
-                    System.out.println("Не верная категория");
-                }
-            }
-            System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
-            data = reader.readLine();
-            if (data != null || data.length() != 0) {
-                LocalDate date;
-                if ((date = Validation.getInstance().validData(data)) != null)
-                    transaction.setDate(date);
-                else {
-                    System.out.println("Не верная дата");
-                }
-            }
-            data = reader.readLine();
-            if (data != null || data.length() != 0) {
-                System.out.println("Введите true если эта транзакция является плановой");
-                transaction.setPlanned(Boolean.valueOf(reader.readLine()));
-            }
-        }
-        return transaction;
-    }
-
-    public Transaction chooseTransactionFromList(List<Transaction> transactions) throws IOException {
-        System.out.println("Выберите транзацию по ID");
-        for (Transaction transaction :
-                transactions) {
-            System.out.println(transaction);
-        }
-        int id=-1;
-        while (id<0) {
-            System.out.println("Введите ID");
-            id = Integer.parseInt(reader.readLine());
-        }
-        for (Transaction transaction :
-                transactions) {
-            if(transaction.getID()==id){
+    public Transaction receiveDataForTransaction() throws  ViewException {
+        try {
+            while (true) {
+                System.out.println("Введите транзакцию");
+                Transaction transaction = new Transaction();
+                transaction.setID(DataGenerator.getUniTrID());
+                enterSum(transaction);
+                enterCategory(transaction);
+                enterData(transaction);
+                enterPlaned(transaction);
                 return transaction;
             }
         }
-        return null;
+         catch (IOException e) {
+            throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
+        }
+
     }
 
     private boolean enterPlaned(Transaction transaction) throws IOException {
@@ -166,61 +124,88 @@ public class Menu {
     }
 
     private boolean enterCategory(Transaction transaction) throws IOException {
-        boolean ok=false;
-        System.out.println("Выберите категорию из предложенных");
-        System.out.println(Arrays.toString(Category.values()));
-        String category = reader.readLine();
-        if (Validation.getInstance().isSuchCategoryExist(category)) {
-            transaction.setCategory(category.toUpperCase());
-            ok=true;
+        boolean incorrectInput=true;
+        while (incorrectInput) {
+            System.out.println("Выберите категорию из предложенных");
+            System.out.println(Arrays.toString(Category.values()));
+            String category = reader.readLine().toUpperCase();
+            if (Validation.getInstance().isSuchCategoryExist(category)) {
+                transaction.setCategory(category);
+                incorrectInput = false;
+            } else {
+                System.out.println("Не верная категория");
+            }
         }
-        else {
-            System.out.println("Не верная категория");
-        }
-        return ok;
+        return incorrectInput;
     }
 
     private boolean enterData(Transaction transaction) throws IOException {
-        boolean ok=false;
-        System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
-        String data = reader.readLine();
-        LocalDate date;
-        if ((date = Validation.getInstance().validData(data)) != null) {
-            transaction.setDate(date);
-            ok=true;
-        }
-        else {
-            System.out.println("Не верная дата");
-        }
-        return ok;
+       while (true) {
+           try {
+               System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
+               String data = reader.readLine();
+               LocalDate date;
+               date = Validation.getInstance().validData(data);
+               transaction.setDate(date);
+               return true;
+           }
+           catch (ServiceException e){
+               System.out.println(e.getException());
+               System.out.println("Для продолжения введите корректную дату");
+           }
+       }
     }
 
-    private boolean enterSum(Transaction transaction) throws IOException {
+    private boolean enterSum(Transaction transaction) throws IOException, ViewException {
         System.out.println("Введите сумму транзакции");
-        transaction.setSum(Validation.getInstance().receiveBigDecimalFromString(reader.readLine()));
+        try {
+            transaction.setSum(Validation.getInstance().receiveBigDecimalFromString(reader.readLine()));
+        } catch (ServiceException e) {
+            throw new ViewException("Сумма введена некорректно "+e.getException());
+        }
         return true;
     }
-
-    public Transaction editTransaction(Transaction transaction) throws IOException {
-        System.out.println("Введите\n1 для редактирования даты\n2 для редактирования категории\n" +
-                "3 для редактирования суммы\n4 для редактирования запланированности");
-        switch (checkEnter(4)){
-            case 1:
-                enterData(transaction);
-                break;
-            case 2:
-                enterCategory(transaction);
-                break;
-            case 3:
-                enterSum(transaction);
-                break;
-            case 4:
-                enterPlaned(transaction);
-                break;
-                default:
-                    System.out.println("Неверный выбор");
+    public int receiveID() throws ViewException {
+        while (true) {
+            try {
+                System.out.println("Введите ID");
+                return Integer.parseInt(reader.readLine());
+            } catch (java.lang.NumberFormatException e){
+                System.out.println("Введите числовой ID");
+            }
+            catch (IOException e) {
+                throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
+            }
         }
-        return transaction;
+    }
+
+    public Transaction editTransaction(Transaction transaction) throws  ViewException {
+        while (true) {
+            try {
+                System.out.println("Введите\n1 для редактирования даты\n2 для редактирования категории\n" +
+                        "3 для редактирования суммы\n4 для редактирования запланированности");
+                switch (checkEnter(4)) {
+                    case 1:
+                        enterData(transaction);
+                        break;
+                    case 2:
+                        enterCategory(transaction);
+                        break;
+                    case 3:
+                        enterSum(transaction);
+                        break;
+                    case 4:
+                        enterPlaned(transaction);
+                        break;
+                    default:
+                        System.out.println("Неверный выбор");
+                }
+                return transaction;
+            }
+            catch (IOException e) {
+                throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
+            }
+        }
     }
 
     public void printAllTransaction(List<Transaction> transactions){
@@ -234,7 +219,7 @@ public class Menu {
         System.out.println(error);
     }
 
-    private void workWithTransaction() throws IOException, ClassNotFoundException {
+    private void workWithTransaction() throws ControllerException, ViewException {
 
         while (true){
             System.out.println("Введите\n1 для добавления транзакциии\n2 для просмота всех транзакций\n" +
@@ -243,16 +228,25 @@ public class Menu {
                 case -1:
                     return;
                 case 1:
-                    CommandProvider.getCommandProvider().getCommand("ADD_TRANSACTION").execute();
+                    if(CommandProvider.getCommandProvider().getCommand("ADD_TRANSACTION").execute()){
+                        System.out.println("Транзакция успешно добавлена");
+                    }
+                    else System.out.println("Невозможно добавить такую транзакцию");
                     break;
                 case 2:
-                    CommandProvider.getCommandProvider().getCommand("GET_ALL_TRANSACTION").execute();
+                    CommandProvider.getCommandProvider().getCommand("RECEIVE_ALL_TRANSACTION").execute();
                     break;
                 case 3:
-                    CommandProvider.getCommandProvider().getCommand("DELETE_TRANSACTION").execute();
+                    if( CommandProvider.getCommandProvider().getCommand("DELETE_TRANSACTION").execute()){
+                        System.out.println("Тканзакция успешно удалена");
+                    }
+                    else System.out.println("Нет такой транзакции");
                     break;
                 case 4:
-                    CommandProvider.getCommandProvider().getCommand("UPDATE_TRANSACTION").execute();
+                    if (CommandProvider.getCommandProvider().getCommand("UPDATE_TRANSACTION").execute()){
+                        System.out.println("Тканзакция успешно изменена");
+                    }
+                    else System.out.println("Нет такой транзакции");
                     break;
                 default:
                     System.out.println("Не верный выбор");
@@ -264,12 +258,19 @@ public class Menu {
         System.out.println("Текущий баланс: "+sum.toString());
     }
 
-    public LocalDate askAboutDate() throws IOException {
+    public LocalDate askAboutDate() throws  ViewException {
         System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
-        return Validation.getInstance().validData(reader.readLine());
+        try {
+            return Validation.getInstance().validData(reader.readLine());
+        } catch (ServiceException e) {
+            throw new ViewException("Невеная дата "+e.getException());
+        }
+        catch (IOException e) {
+            throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
+        }
     }
 
-    private void chooseInterval() throws IOException, ClassNotFoundException {
+    private void chooseInterval() throws  ControllerException, ViewException {
         System.out.println("Введите\n1 для поиска до текущей даты\n2 для поиска до произвольной даты");
         switch (checkEnter(2)){
             case 1:

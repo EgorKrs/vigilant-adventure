@@ -1,5 +1,7 @@
 package com.loneless.service;
 
+import com.loneless.dao.DAOExeption;
+import com.loneless.dao.FactoryDAO;
 import com.loneless.entity.Category;
 import com.loneless.entity.Transaction;
 import com.loneless.entity.TransactionWhipper;
@@ -37,16 +39,21 @@ public class Logic {
                 Boolean.valueOf(planned));
     }
 
-    public void addTransaction(TransactionWhipper transactionWhipper,Transaction transaction){
-        transactionWhipper.getTransactions().add(transaction);
+    public boolean addTransaction(TransactionWhipper transactionWhipper,Transaction transaction){
+        if(Validation.getInstance().isTransactionValid(transaction)) {
+            transactionWhipper.getTransactions().add(transaction);
+            return true;
+        }
+        else return false;
     }
     public boolean removeTransactionByID(TransactionWhipper transactionWhipper, int id){
         return transactionWhipper.getTransactions().removeIf(transaction -> transaction.getID()==id);
     }
-    public boolean changeTransactionByID(TransactionWhipper transactionWhipper,Transaction newTransaction,
-                                      Transaction oldTransaction){
-        return Collections.replaceAll(transactionWhipper.getTransactions(),oldTransaction,newTransaction);
+    public Transaction receiveTransactionByID(List<Transaction> transactions, int id) {
+        Optional<Transaction> transactionThatWeLookingFor=transactions.stream().filter(transaction -> transaction.getID()==id).findFirst();
+        return transactionThatWeLookingFor.orElseGet(Transaction::new);
     }
+
     public List<Transaction> findOllTransactionToCurrentDate(LocalDate dataToFind,
                                                              TransactionWhipper transactionWhipper){
         List<Transaction> finderTransaction=new LinkedList<>();
@@ -71,15 +78,6 @@ public class Logic {
         return finderTransaction;
     }
 
-    public List<Transaction> filterTransaction(Transaction transactionToFind,List<Transaction> transactions){
-        List<Transaction> finedTransaction=new LinkedList<>();
-       transactions.stream()
-               .filter(Objects::nonNull)
-               .filter(transaction -> transaction.getID()==(transactionToFind.getID()))
-               .forEach(finedTransaction::add);
-       return finedTransaction;
-    }
-
     public List<Transaction> findAllPlannedTransaction(List<Transaction> transactions){
         List<Transaction> transactionsWeNeed=new LinkedList<>();
         transactions.stream()
@@ -88,6 +86,14 @@ public class Logic {
                 .forEach(transactionsWeNeed::add);
         return transactionsWeNeed;
 
+    }
+    public boolean saveTransaction() throws ServiceException {
+        try {
+            FactoryDAO.getFileWorker().writeObject(TransactionWhipper.getInstance(),"someData.txt");
+            return true;
+        } catch (DAOExeption daoExeption) {
+            throw new ServiceException("Невозможно сохранить транзакции"+daoExeption.getMessage());
+        }
     }
 
 

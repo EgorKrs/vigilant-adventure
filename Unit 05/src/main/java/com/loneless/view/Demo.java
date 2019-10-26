@@ -1,5 +1,6 @@
 package com.loneless.view;
 
+import com.loneless.dao.DAOExeption;
 import com.loneless.dao.FactoryDAO;
 import com.loneless.entity.TransactionWhipper;
 import com.loneless.entity.UserPrivateData;
@@ -16,9 +17,9 @@ import java.util.GregorianCalendar;
 public class Demo {
 
 
-    public void defaultTransactionAddToFile(TransactionWhipper transactionWhipper) throws IOException {
+    public void defaultTransactionAddToFile(TransactionWhipper transactionWhipper) throws IOException, DAOExeption {
         Transaction change;
-        for (int i=0;i<5;i++){
+        for (int i=0;i<15;i++){
             change=createDefaultTransaction();
             transactionWhipper.getTransactions().add(change);
         }
@@ -39,11 +40,11 @@ public class Demo {
                 DataGenerator.getInstance().getRandom().nextBoolean());
     }
 
-    public TransactionWhipper defaultTransactionReadFromFile(String fileName,TransactionWhipper transactionWhipper) throws IOException, ClassNotFoundException {
+    public TransactionWhipper defaultTransactionReadFromFile(String fileName,TransactionWhipper transactionWhipper) throws IOException, ClassNotFoundException, DAOExeption {
         return FactoryDAO.getFileWorker().readObject(fileName);
     }
 
-    public void addDefaultUserToFile() throws IOException {
+    public void addDefaultUserToFile() throws IOException, DAOExeption {
         UserPrivateData userPrivateData=createDefaultUser();
         FactoryDAO.getFileWorker().writeObject(createDefaultUser(),"UserData.txt");
     }

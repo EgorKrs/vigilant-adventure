@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class WrongRequest implements Command {
     @Override
-    public boolean execute() throws IOException, ClassNotFoundException {
+    public boolean execute() {
         Menu.getInstance().printError("данная функция пока не доступна");
         return true;
     }

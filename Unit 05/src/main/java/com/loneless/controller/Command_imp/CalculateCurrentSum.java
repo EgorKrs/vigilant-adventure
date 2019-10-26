@@ -5,11 +5,11 @@ import com.loneless.entity.TransactionWhipper;
 import com.loneless.service.Logic;
 import com.loneless.view.Menu;
 
-import java.io.IOException;
+
 
 public class CalculateCurrentSum implements Command {
     @Override
-    public boolean execute() throws IOException, ClassNotFoundException {
+    public boolean execute()  {
         Menu.getInstance().printCurrentSum(Logic.getInstance().countSumOfMoney(TransactionWhipper.getInstance()));
         return true;
     }

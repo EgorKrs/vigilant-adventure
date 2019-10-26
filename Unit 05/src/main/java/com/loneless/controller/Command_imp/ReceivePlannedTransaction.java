@@ -5,11 +5,11 @@ import com.loneless.entity.TransactionWhipper;
 import com.loneless.service.Logic;
 import com.loneless.view.Menu;
 
-import java.io.IOException;
+
 
 public class ReceivePlannedTransaction implements Command {
     @Override
-    public boolean execute() throws IOException, ClassNotFoundException {
+    public boolean execute()  {
         Menu.getInstance().printAllTransaction(Logic.getInstance().findAllPlannedTransaction(
                 TransactionWhipper.getInstance().getTransactions()));
         return false;
