@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public enum Category implements Serializable {
     ENTERTAINMENT("ENTERTAINMENT"),
-    CATEGORY("CATEGORY"),
+    FOOD("FOOD"),
     CLOTHES("CLOTHES");
     private String name;
     private static final long serialVersionUID=31L;

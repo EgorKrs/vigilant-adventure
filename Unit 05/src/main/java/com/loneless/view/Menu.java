@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Menu {
 
@@ -45,7 +44,7 @@ public class Menu {
                     workWithTransaction();
                     break;
                 case 2:
-
+                    chooseInterval();
                     break;
                 case 3:
                     CommandProvider.getCommandProvider().getCommand("CALCULATE_CURRENT_SUM").execute();
@@ -104,9 +103,6 @@ public class Menu {
             System.out.println("Введите данные транзакции которую хотите найти");
             System.out.println("Введите ID");
             String data = reader.readLine();
-            if (data != null || data.length() != 0) {
-                transaction.setID(Integer.parseInt(data));
-            }
             if (data != null || data.length() != 0) {
                 transaction.setID(Integer.parseInt(data));
             }
@@ -266,5 +262,24 @@ public class Menu {
 
     public void printCurrentSum(BigDecimal sum){
         System.out.println("Текущий баланс: "+sum.toString());
+    }
+
+    public LocalDate askAboutDate() throws IOException {
+        System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
+        return Validation.getInstance().validData(reader.readLine());
+    }
+
+    private void chooseInterval() throws IOException, ClassNotFoundException {
+        System.out.println("Введите\n1 для поиска до текущей даты\n2 для поиска до произвольной даты");
+        switch (checkEnter(2)){
+            case 1:
+                CommandProvider.getCommandProvider().getCommand("FIND_OLL_TRANSACTION_TO_CURRENT_DATE").execute();
+                break;
+            case 2:
+                CommandProvider.getCommandProvider().getCommand("FIND_OLL_TRANSACTION_IN_INTERVAL").execute();
+                break;
+            default:
+                System.out.println("Не верный выбор");
+        }
     }
 }

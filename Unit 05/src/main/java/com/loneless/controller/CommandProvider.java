@@ -17,6 +17,8 @@ public class CommandProvider {
         repository.put(CommandName.WRONG_REQUEST,new WrongRequest());
         repository.put(CommandName.CALCULATE_CURRENT_SUM,new CalculateCurrentSum());
         repository.put(CommandName.RECEIVE_PLANNED_TRANSACTION,new ReceivePlannedTransaction());
+        repository.put(CommandName.FIND_OLL_TRANSACTION_TO_CURRENT_DATE,new FindOllTransactionToCurrentDate());
+        repository.put(CommandName.FIND_OLL_TRANSACTION_IN_INTERVAL,new FindOllTransactionInInterval());
     }
 
     public Map<CommandName, Command> getRepository() {

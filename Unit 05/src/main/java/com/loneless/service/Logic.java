@@ -64,7 +64,7 @@ public class Logic {
         List<Transaction> finderTransaction=new LinkedList<>();
         for (Transaction transaction:
                 transactionWhipper.getTransactions()) {
-            if(transaction.getDate().compareTo(left)>0&&transaction.getDate().compareTo(right)<0){
+            if(transaction.getDate().compareTo(left)>=0&&transaction.getDate().compareTo(right)<=0){
                 finderTransaction.add(transaction);
             }
         }
