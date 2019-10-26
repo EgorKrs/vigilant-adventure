@@ -40,7 +40,7 @@ public class Demo {
     }
 
     public TransactionWhipper defaultTransactionReadFromFile(String fileName,TransactionWhipper transactionWhipper) throws IOException, ClassNotFoundException {
-        return FactoryDAO.getFileWorker().readObject(transactionWhipper,fileName);
+        return FactoryDAO.getFileWorker().readObject(fileName);
     }
 
     public void addDefaultUserToFile() throws IOException {

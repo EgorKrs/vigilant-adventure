@@ -1,9 +1,6 @@
 package com.loneless.controller;
 
-import com.loneless.controller.Command_imp.AddTransaction;
-import com.loneless.controller.Command_imp.AutorisateUser;
-import com.loneless.controller.Command_imp.DeliteTransaction;
-import com.loneless.controller.Command_imp.UpdateTransaction;
+import com.loneless.controller.Command_imp.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +13,8 @@ public class CommandProvider {
         repository.put(CommandName.AUTHORISE_USER,new AutorisateUser());
         repository.put(CommandName.DELETE_TRANSACTION,new DeliteTransaction());
         repository.put(CommandName.UPDATE_TRANSACTION,new UpdateTransaction());
+        repository.put(CommandName.GET_ALL_TRANSACTION,new GetAllTransaction());
+        repository.put(CommandName.WRONG_REQUEST,new WrongRequest());
     }
 
     public Map<CommandName, Command> getRepository() {
@@ -25,6 +24,7 @@ public class CommandProvider {
     public static CommandProvider getCommandProvider() {
         return commandProvider;
     }
+
     public Command getCommand(String name){
         CommandName commandName=null;
         Command command=null;

@@ -10,10 +10,19 @@ import java.util.List;
 public class TransactionWhipper implements Serializable {
     private List<Transaction> transactions =new LinkedList<>();
     private static final long serialVersionUID=33L;
-    private static TransactionWhipper instance = null;
+    private  static TransactionWhipper instance;
+
+    static {
+        try {
+            instance = FactoryDAO.getFileWorker().readObject("someData.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public TransactionWhipper() throws IOException, ClassNotFoundException {
-        FactoryDAO.getFileWorker().readObject(instance,"someData.txt");
     }
 
     public static TransactionWhipper getInstance() {

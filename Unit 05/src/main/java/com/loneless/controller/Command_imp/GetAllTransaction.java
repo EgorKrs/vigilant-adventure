@@ -6,10 +6,10 @@ import com.loneless.view.Menu;
 
 import java.io.IOException;
 
-public class AddTransaction implements Command {
+public class GetAllTransaction implements Command {
     @Override
-    public boolean execute() throws IOException {
-        TransactionWhipper.getInstance().getTransactions().add(Menu.getInstance().receiveDataForTransaction());
+    public boolean execute() throws IOException, ClassNotFoundException {
+        Menu.getInstance().printAllTransaction(TransactionWhipper.getInstance().getTransactions());
         return true;
     }
 }

@@ -9,7 +9,6 @@ import java.io.*;
 import java.text.ParseException;
 
 public class Launcher {
-    static TransactionWhipper transactionWhipper =new TransactionWhipper();
     public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
         Demo demo=new Demo();
 //        demo.defaultTransactionAddToFile(transactionWhipper);

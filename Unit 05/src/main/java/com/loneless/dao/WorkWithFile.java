@@ -13,10 +13,10 @@ public class WorkWithFile {
         ObjectOutputStream outputStream=new  ObjectOutputStream(new FileOutputStream(fileName));
         outputStream.writeObject(transactionWhipper);
     }
-    public TransactionWhipper readObject(TransactionWhipper transactionWhipper,String fileName) throws IOException,
+    public TransactionWhipper readObject(String fileName) throws IOException,
             ClassNotFoundException {
         ObjectInputStream inputStream=new ObjectInputStream(new FileInputStream(fileName));
-        transactionWhipper=(TransactionWhipper) inputStream.readObject();
+        TransactionWhipper transactionWhipper = (TransactionWhipper) inputStream.readObject();
         return transactionWhipper;
     }
     public void writeObject(UserPrivateData userData, String fileName) throws IOException {

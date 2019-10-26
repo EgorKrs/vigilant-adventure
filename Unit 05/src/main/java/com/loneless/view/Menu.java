@@ -1,5 +1,7 @@
 package com.loneless.view;
 
+import com.loneless.controller.CommandProvider;
+import com.loneless.entity.Category;
 import com.loneless.entity.Transaction;
 import com.loneless.entity.UserPrivateData;
 import com.loneless.service.DataGenerator;
@@ -9,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,14 +33,15 @@ public class Menu {
         this.reader=reader;
     }
 
-    public void startMenu() throws IOException {
+    public void startMenu() throws IOException, ClassNotFoundException {
         while (true){
             System.out.println("Введите\n1 для работы с вашими транзакцией\n2 для просмота транзакций в интервале\n" +
-                    "3 для просмотра нераспределенных финансов\n4 для просмотра плановых транзакций\n-1 для выхода");
+                    "3 для просмотра остатков финансов\n4 для просмотра плановых транзакций\n-1 для выхода");
             switch (checkEnter(4)){
                 case -1:
                     return;
                 case 1:
+                    workWithTransaction();
                     break;
                 case 2:
                     break;
@@ -154,14 +158,17 @@ public class Menu {
         }
         return null;
     }
+
     private boolean enterPlaned(Transaction transaction) throws IOException {
         System.out.println("Введите true если эта транзакция является плановой");
         transaction.setPlanned(Boolean.valueOf(reader.readLine()));
         return true;
     }
+
     private boolean enterCategory(Transaction transaction) throws IOException {
         boolean ok=false;
         System.out.println("Выберите категорию из предложенных");
+        System.out.println(Arrays.toString(Category.values()));
         String category = reader.readLine();
         if (Validation.getInstance().isSuchCategoryExist(category)) {
             transaction.setCategory(category.toUpperCase());
@@ -172,6 +179,7 @@ public class Menu {
         }
         return ok;
     }
+
     private boolean enterData(Transaction transaction) throws IOException {
         boolean ok=false;
         System.out.println("Введите дату в формате dd-MMM-yyyy:HH:mm");
@@ -186,6 +194,7 @@ public class Menu {
         }
         return ok;
     }
+
     private boolean enterSum(Transaction transaction) throws IOException {
         System.out.println("Введите сумму транзакции");
         transaction.setSum(Validation.getInstance().receiveBigDecimalFromString(reader.readLine()));
@@ -214,5 +223,40 @@ public class Menu {
         return transaction;
     }
 
+    public void printAllTransaction(List<Transaction> transactions){
+        for (Transaction transaction :
+                transactions) {
+            System.out.println(transaction);
+        }
+    }
 
+    public void printError(String error){
+        System.out.println(error);
+    }
+
+    private void workWithTransaction() throws IOException, ClassNotFoundException {
+
+        while (true){
+            System.out.println("Введите\n1 для добавления транзакциии\n2 для просмота всех транзакций\n" +
+                    "3 для удаления транзакций\n4 редактирования транзакции\n-1 для выхода");
+            switch (checkEnter(4)){
+                case -1:
+                    return;
+                case 1:
+                    CommandProvider.getCommandProvider().getCommand("ADD_TRANSACTION").execute();
+                    break;
+                case 2:
+                    CommandProvider.getCommandProvider().getCommand("GET_ALL_TRANSACTION").execute();
+                    break;
+                case 3:
+                    CommandProvider.getCommandProvider().getCommand("DELETE_TRANSACTION").execute();
+                    break;
+                case 4:
+                    CommandProvider.getCommandProvider().getCommand("UPDATE_TRANSACTION").execute();
+                    break;
+                default:
+                    System.out.println("Не верный выбор");
+            }
+        }
+    }
 }

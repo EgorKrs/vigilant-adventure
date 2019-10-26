@@ -1,6 +1,7 @@
 package com.loneless.service;
 
 import com.github.javafaker.Faker;
+import com.loneless.entity.Transaction;
 import com.loneless.entity.TransactionWhipper;
 
 import java.util.Random;
@@ -14,11 +15,15 @@ public class DataGenerator {
 
     private static final Random random=new Random();
 
-    private static  AtomicInteger uniTransactionID =new AtomicInteger();
+    private static AtomicInteger uniTransactionID;
 
     private static  AtomicInteger uniUserID =new AtomicInteger();
 
-    private DataGenerator(){}
+    private DataGenerator(){
+        uniTransactionID =new AtomicInteger();
+        uniTransactionID.set(TransactionWhipper.getInstance().getTransactions().get(
+                TransactionWhipper.getInstance().getTransactions().size()-1).getID());
+    }
 
     public static DataGenerator getInstance() {
         return instance;
@@ -44,9 +49,6 @@ public class DataGenerator {
         uniTransactionID.set(transactionWhipper.getTransactions().size());
     }
 
-    public static void setUniUserID(AtomicInteger uniUserID) {
-        DataGenerator.uniUserID = uniUserID;
-    }
 
     public static AtomicInteger getUniUserID() {
         return uniUserID;
