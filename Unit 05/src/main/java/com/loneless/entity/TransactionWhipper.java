@@ -14,7 +14,7 @@ public class TransactionWhipper implements Serializable { // не entity но д
     private  static TransactionWhipper instance;
 
     static {
-        String fileName="someData.txt";
+        String fileName="TransactionData.txt";
         try {
             instance = FactoryDAO.getFileWorker().readObject(fileName);
         }

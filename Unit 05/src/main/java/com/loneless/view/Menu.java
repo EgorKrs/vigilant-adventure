@@ -86,6 +86,7 @@ public class Menu {
 
     public UserPrivateData authorisation() throws ViewException {
         try {
+            System.out.println("Добро пожаловать. Авторизуйтесь для продолжения");
             UserPrivateData userPrivateData = new UserPrivateData();
             System.out.println("Введите логин");
             userPrivateData.setLogin(reader.readLine());

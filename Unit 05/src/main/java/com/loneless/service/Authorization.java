@@ -1,5 +1,6 @@
 package com.loneless.service;
 
+import com.loneless.PathManager;
 import com.loneless.dao.DAOExeption;
 import com.loneless.dao.FactoryDAO;
 import com.loneless.entity.UserPrivateData;
@@ -14,11 +15,11 @@ public class Authorization {
     public boolean isExist(UserPrivateData user) throws ServiceException {
         try {
             UserPrivateData existingUser = new UserPrivateData();
-            existingUser = FactoryDAO.getFileWorker().readObject(existingUser, "UserData.txt");
+            existingUser = FactoryDAO.getFileWorker().readObject(existingUser, PathManager.getInstance().getUserData());
             return existingUser.equals(user);
         }
          catch (DAOExeption daoExeption) {
-            throw new ServiceException("Ошибка в авторизации "+daoExeption.getMessage());
+            throw new ServiceException("Ошибка в авторизации "+daoExeption.getException());
         }
     }
 }

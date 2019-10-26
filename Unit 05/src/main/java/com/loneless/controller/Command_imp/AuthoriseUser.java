@@ -13,7 +13,7 @@ public class AuthoriseUser implements Command {
         try {
             return Authorization.getInstance().isExist(Menu.getInstance().authorisation());
         } catch (ServiceException e) {
-            throw new ControllerException("Ошибка авторизации "+e.getMessage());
+            throw new ControllerException("Ошибка авторизации "+e.getMessage()+" "+e.getException());
         }
     }
 }

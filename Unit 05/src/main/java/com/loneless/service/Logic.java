@@ -89,10 +89,10 @@ public class Logic {
     }
     public boolean saveTransaction() throws ServiceException {
         try {
-            FactoryDAO.getFileWorker().writeObject(TransactionWhipper.getInstance(),"someData.txt");
+            FactoryDAO.getFileWorker().writeObject(TransactionWhipper.getInstance(),"TransactionData.txt");
             return true;
         } catch (DAOExeption daoExeption) {
-            throw new ServiceException("Невозможно сохранить транзакции"+daoExeption.getMessage());
+            throw new ServiceException("Невозможно сохранить транзакции"+daoExeption.getException());
         }
     }
 

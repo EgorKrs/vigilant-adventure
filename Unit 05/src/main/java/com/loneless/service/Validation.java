@@ -55,7 +55,7 @@ public class Validation {
             return new BigDecimal(num);
         }
         catch (java.lang.NumberFormatException e){
-            throw new ServiceException("Оцибка при приведении строки в BigDecimal при валидации "+e);
+            throw new ServiceException("Оцибка при приведении строки в BigDecimal при валидации "+e.getMessage());
         }
     }
 

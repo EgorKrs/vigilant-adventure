@@ -12,7 +12,7 @@ public class SaveTransactions implements Command {
         try {
             Logic.getInstance().saveTransaction();
         } catch (ServiceException e) {
-            throw new ControllerException(e.getMessage());
+            throw new ControllerException(e.getException());
         }
         return false;
     }

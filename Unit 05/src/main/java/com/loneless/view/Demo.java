@@ -23,7 +23,7 @@ public class Demo {
             change=createDefaultTransaction();
             transactionWhipper.getTransactions().add(change);
         }
-        FactoryDAO.getFileWorker().writeObject(transactionWhipper,"someData.txt");
+        FactoryDAO.getFileWorker().writeObject(transactionWhipper,"TransactionData.txt");
     }
 
     public Transaction createDefaultTransaction(){
