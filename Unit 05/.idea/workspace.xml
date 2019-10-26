@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="79655b05-c802-4ddd-b36d-9e779bea1d4f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/PathManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/CommandName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/CommandProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AddTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AuthoriseUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/CalculateCurrentSum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/DeleteTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindOllTransactionInInterval.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindOllTransactionToCurrentDate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceiveAllTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceivePlannedTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/SaveTransactions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/UpdateTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/WrongRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/controller/ControllerException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/dao/DAOExeption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/dao/FactoryDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/dao/WorkWithFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/entity/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/entity/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/entity/TransactionWhipper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/entity/UserPrivateData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/service/Authorization.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/service/DataGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/service/Logic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/service/ServiceException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/service/Validation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/view/Demo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/view/Launcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/view/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loneless/view/ViewException.java" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="80050113">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="3" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="11" />
+          <entry key="java" value="12335" />
+          <entry key="txt" value="263" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="12335" />
+          <entry key="PLAIN_TEXT" value="274" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="gitignore" value="1" />
+          <entry key="java" value="258" />
+          <entry key="txt" value="15" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="258" />
+          <entry key="PLAIN_TEXT" value="16" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="Singleton" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/SignIn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AskUserForAutorisationData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/resiveAutorisationData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/CreateTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/entity/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/addTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/autorisateUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/GetAllTransactoin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/service/DataGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/DeliteTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ResievePlannedTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/RelievePlannedTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/RecievePlannedTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/entity/Category.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/view/ViewExeption.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/service/ServiceExeption.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/ControllerExeption.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/service/ServiceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/view/ViewException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/GetAllTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ResieveAllTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/dao/WorkWithFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AutorisateUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceivePlannedTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceiveAllTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/WrongRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindOllTransactionToCurrentDate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindOllTransactionInInterval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/CalculateCurrentSum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/ControllerException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/dao/DAOExeption.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/entity/UserPrivateData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/view/Demo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/entity/TransactionWhipper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/CommandName.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/CommandProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/UpdateTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/DeleteTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AddTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/PathManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/view/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AuthoriseUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/PathManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/service/Authorization.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/service/Logic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/service/Validation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/SaveTransactions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/loneless/view/Menu.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/Java/apache-maven-3.6.1-bin" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="FinalTask" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="FinalTask" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="420" />
+    <option name="y" value="618" />
+    <option name="width" value="920" />
+    <option name="height" value="365" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FinalTask" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Unit 05" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572106735168" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FinalTask" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\egor-\IdeaProjects\version1.1\vigilant-adventure\Unit 05" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.loneless" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\egor-\IdeaProjects\version1.1\vigilant-adventure\Unit 05\Data" />
+      <recent name="C:\Users\egor-\IdeaProjects\version1.1\vigilant-adventure\Unit 05\src\main\resources" />
+      <recent name="C:\Users\egor-\IdeaProjects\version1.1\vigilant-adventure\Unit 05\src\main\java\com\loneless" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.loneless.view.Launcher" />
+      <module name="Unit 05" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.loneless.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Launcher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79655b05-c802-4ddd-b36d-9e779bea1d4f" name="Default Changelist" comment="" />
+      <created>1571738406915</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571738406915</updated>
+    </task>
+    <task id="LOCAL-00001" summary="a couple of work">
+      <created>1571838709042</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571838709042</updated>
+    </task>
+    <task id="LOCAL-00002" summary="finish use case">
+      <created>1571852201961</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571852201961</updated>
+    </task>
+    <task id="LOCAL-00003" summary="more work, for god of work">
+      <created>1571929627421</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571929627421</updated>
+    </task>
+    <task id="LOCAL-00004" summary="more work, for god of work">
+      <created>1572005019084</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1572005019084</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update finish">
+      <created>1572009729073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572009729073</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Controller finish">
+      <created>1572011526358</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1572011526358</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add some dead bugs">
+      <created>1572087192009</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572087192009</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Готовы функции подсчета суммы + плановые транзакции">
+      <created>1572090253618</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1572090253618</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Готовы функции поиска в интервале">
+      <created>1572092591876</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572092591876</updated>
+    </task>
+    <task id="LOCAL-00010" summary="добавление &quot;обработки&quot; исключений">
+      <created>1572104017400</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1572104017400</updated>
+    </task>
+    <task id="LOCAL-00011" summary="добавление авторизации">
+      <created>1572106728030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1572106728030</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17324094" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="simpleUML" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32794678" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24809887" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39923954" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32867134" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32794678" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="UML design tool window" order="6" weight="0.32995737" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
+      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="9" side_tool="true" weight="0.3295302" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="a couple of work" />
+    <MESSAGE value="finish use case" />
+    <MESSAGE value="more work, for god of work" />
+    <MESSAGE value="update finish" />
+    <MESSAGE value="Controller finish" />
+    <MESSAGE value="add some dead bugs" />
+    <MESSAGE value="Готовы функции подсчета суммы + плановые транзакции" />
+    <MESSAGE value="Готовы функции поиска в интервале" />
+    <MESSAGE value="добавление &quot;обработки&quot; исключений" />
+    <MESSAGE value="добавление авторизации" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавление авторизации" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceivePlannedTransaction.java</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loneless/dao/WorkWithFile.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/io/ObjectInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="213" column="13" selection-start-line="213" selection-start-column="13" selection-end-line="213" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/util/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/JDK-8/jre/lib/rt.jar!/com/sun/xml/internal/ws/commons/xmlutil/Converter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="235" column="72" lean-forward="true" selection-start-line="235" selection-start-column="72" selection-end-line="235" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/someTestData.txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/service/Conv.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/entity/User.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/SignIn.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindTransaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Controller.java" />
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/util/function/Predicate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/io/IOException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/JDK-8/src.zip!/java/rmi/ServerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindOllTransactionInInterval.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/FindOllTransactionToCurrentDate.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceiveAllTransaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/ReceivePlannedTransaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/WrongRequest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/entity/Category.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/service/DataGenerator.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/entity/Transaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/CalculateCurrentSum.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/UpdateTransaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/DeleteTransaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AddTransaction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/view/Demo.java" />
+    <entry file="file://$PROJECT_DIR$/Data/UserData.txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/CommandName.java" />
+    <entry file="file://$PROJECT_DIR$/Data/TransactionData.txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/AuthoriseUser.java" />
+    <entry file="file://$PROJECT_DIR$/UserData.txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/dao/FactoryDAO.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/PathManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/view/Launcher.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/dao/DAOExeption.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/dao/WorkWithFile.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/service/Authorization.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/service/Logic.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/service/Validation.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/Command_imp/SaveTransactions.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/CommandProvider.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/controller/ControllerException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/entity/TransactionWhipper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/entity/UserPrivateData.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/service/ServiceException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/view/Menu.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/loneless/view/ViewException.java" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>h2-1.4.199</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Unit 05</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.github.javafaker:javafaker:1.0.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
