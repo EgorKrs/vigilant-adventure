@@ -6,7 +6,7 @@ import com.loneless.view.Menu;
 
 import java.io.IOException;
 
-public class DeliteTransaction implements Command {
+public class DeleteTransaction implements Command {
     @Override
     public boolean execute() throws IOException, ClassNotFoundException {
         return TransactionWhipper.getInstance().getTransactions().remove(Menu.getInstance().chooseTransactionFromList(

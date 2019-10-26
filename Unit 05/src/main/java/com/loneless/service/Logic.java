@@ -80,5 +80,15 @@ public class Logic {
        return finedTransaction;
     }
 
+    public List<Transaction> findAllPlannedTransaction(List<Transaction> transactions){
+        List<Transaction> transactionsWeNeed=new LinkedList<>();
+        transactions.stream()
+                .filter(Objects::nonNull)
+                .filter(Transaction::isPlanned)
+                .forEach(transactionsWeNeed::add);
+        return transactionsWeNeed;
+
+    }
+
 
 }

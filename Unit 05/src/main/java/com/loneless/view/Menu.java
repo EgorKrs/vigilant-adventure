@@ -10,6 +10,7 @@ import com.loneless.service.Validation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -44,10 +45,13 @@ public class Menu {
                     workWithTransaction();
                     break;
                 case 2:
+
                     break;
                 case 3:
+                    CommandProvider.getCommandProvider().getCommand("CALCULATE_CURRENT_SUM").execute();
                     break;
                 case 4:
+                    CommandProvider.getCommandProvider().getCommand("Receive Planned Transaction").execute();
                     break;
                     default:
                         System.out.println("Не верный выбор");
@@ -258,5 +262,9 @@ public class Menu {
                     System.out.println("Не верный выбор");
             }
         }
+    }
+
+    public void printCurrentSum(BigDecimal sum){
+        System.out.println("Текущий баланс: "+sum.toString());
     }
 }
