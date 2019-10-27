@@ -3,9 +3,11 @@ package com.loneless.view;
 import com.loneless.controller.CommandProvider;
 import com.loneless.controller.ControllerException;
 
+import java.io.IOException;
+
 
 public class Launcher {
-    public static void main(String[] args) throws ViewException {
+    public static void main(String[] args) throws ViewException, IOException {
         //Demo demo=new Demo();
         //demo.defaultTransactionAddToFile(TransactionWhipper.getInstance());//снять коментарий для того что бы создать данные по умолчанию
         //System.out.println(FactoryDAO.getFileWorker().readObject(new UserPrivateData(),"userData.txt"));
@@ -21,6 +23,9 @@ public class Launcher {
                 else System.out.println("Не верные данные");
             } catch (ControllerException e) {
                 System.out.println(e.getException());
+            }
+            finally {
+                menu.getReader().close();
             }
         }
     }

@@ -27,6 +27,10 @@ public class Menu {
 
     private BufferedReader reader;
 
+    BufferedReader getReader() {
+        return reader;
+    }
+
     public Menu(){
         reader=new BufferedReader(new InputStreamReader(System.in));
     }
@@ -35,7 +39,7 @@ public class Menu {
         this.reader=reader;
     }
 
-    public void startMenu() throws  ViewException {
+    void startMenu() throws  ViewException {
 
         while (true) {
             try {
@@ -100,8 +104,9 @@ public class Menu {
     }
 
     public Transaction receiveDataForTransaction() throws  ViewException {
-        try {
-            while (true) {
+        while (true) {
+            try {
+
                 System.out.println("Введите транзакцию");
                 Transaction transaction = new Transaction();
                 transaction.setID(DataGenerator.getUniTrID());
@@ -110,10 +115,10 @@ public class Menu {
                 enterData(transaction);
                 enterPlaned(transaction);
                 return transaction;
+
+            } catch (IOException e) {
+                throw new ViewException("Ошибка в работе  BufferedReader " + e.getMessage());
             }
-        }
-         catch (IOException e) {
-            throw new ViewException("Ошибка в работе  BufferedReader "+e.getMessage());
         }
 
     }
