@@ -12,7 +12,8 @@ public class AddTransaction implements Command {
     @Override
     public boolean execute() throws ControllerException {
         try {
-            if( Logic.getInstance().addTransaction(TransactionWhipper.getInstance(), Menu.getInstance().receiveDataForTransaction())){
+            if( Logic.getInstance().addTransaction(TransactionWhipper.getInstance(),
+                    Menu.getInstance().receiveDataForTransaction())){
                 CommandProvider.getCommandProvider().getCommand("Save_Transactions").execute();
                 return true;
             }

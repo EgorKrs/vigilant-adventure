@@ -1,5 +1,6 @@
 package com.loneless.service;
 
+import com.loneless.PathManager;
 import com.loneless.dao.DAOExeption;
 import com.loneless.dao.FactoryDAO;
 import com.loneless.entity.Category;
@@ -89,7 +90,7 @@ public class Logic {
     }
     public boolean saveTransaction() throws ServiceException {
         try {
-            FactoryDAO.getFileWorker().writeObject(TransactionWhipper.getInstance(),"TransactionData.txt");
+            FactoryDAO.getFileWorker().writeObject(TransactionWhipper.getInstance(), PathManager.getInstance().getTransactionData());
             return true;
         } catch (DAOExeption daoExeption) {
             throw new ServiceException("Невозможно сохранить транзакции"+daoExeption.getException());

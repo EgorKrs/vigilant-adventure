@@ -1,4 +1,4 @@
-package com.loneless.LInkedList;
+package com.loneless.lInked_list;
 
 public class List<Item> {
 

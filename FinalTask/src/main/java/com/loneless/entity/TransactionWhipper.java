@@ -1,5 +1,6 @@
 package com.loneless.entity;
 
+import com.loneless.PathManager;
 import com.loneless.dao.DAOExeption;
 import com.loneless.dao.FactoryDAO;
 
@@ -14,7 +15,7 @@ public class TransactionWhipper implements Serializable { // не entity но д
     private  static TransactionWhipper instance;
 
     static {
-        String fileName="TransactionData.txt";
+        String fileName= PathManager.getInstance().getTransactionData();
         try {
             instance = FactoryDAO.getFileWorker().readObject(fileName);
         }
@@ -24,10 +25,11 @@ public class TransactionWhipper implements Serializable { // не entity но д
         }
     }
 
-    public TransactionWhipper() throws IOException, ClassNotFoundException {
-    }
+    public TransactionWhipper()  {    }
 
     public static TransactionWhipper getInstance() {
+        if(instance==null)
+            instance=new TransactionWhipper();
         return instance;
     }
 
@@ -46,7 +48,6 @@ public class TransactionWhipper implements Serializable { // не entity но д
     public void setDeltaBalance(Transaction balance, int pos){
         transactions.set(pos,balance);
     }
-
 
     public List<Transaction> getTransactions() {
         return transactions;

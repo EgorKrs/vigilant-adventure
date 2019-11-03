@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.loneless.entity.Transaction;
 import com.loneless.entity.TransactionWhipper;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -21,8 +22,16 @@ public class DataGenerator {
 
     private DataGenerator(){
         uniTransactionID =new AtomicInteger();
-        uniTransactionID.set(TransactionWhipper.getInstance().getTransactions().get(
-                TransactionWhipper.getInstance().getTransactions().size()-1).getID());
+        List<Transaction> transactions=TransactionWhipper.getInstance().getTransactions();
+        int id;
+        int last=transactions.size()-1;
+        if(last<0){
+            last=0;
+            id=0;
+        }
+        else
+        id=TransactionWhipper.getInstance().getTransactions().get(last).getID();
+        uniTransactionID.set(id);
     }
 
     public static DataGenerator getInstance() {
